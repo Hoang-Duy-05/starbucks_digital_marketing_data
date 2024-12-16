@@ -32,7 +32,7 @@ SELECT
 	AVG(app_usage_frequency) AS app_usage_frequency
 FROM frequency
 GROUP BY [location]
---2. Digital Marketing---
+--3. Digital Marketing---
 --order value and social media---
 SELECT
 	corr([order_value], [social_media_engagement]) as Corr_V_S
