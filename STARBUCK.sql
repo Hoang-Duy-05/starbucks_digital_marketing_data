@@ -16,17 +16,17 @@ FROM [dbo].[starbucks_digital_marketing_data])
 --Female favorite products---
 SELECT 
 COUNT( CASE 
-			WHEN [gender] = 'Female' and [product_preference] = 'Americano' then [user_id] end) as F_A,
+	WHEN [gender] = 'Female' and [product_preference] = 'Americano' then [user_id] end) as F_A,
 COUNT( CASE
-			WHEN [gender] = 'Female' and [product_preference] = 'Cappuccino' then [user_id] end) as F_C,
+	WHEN [gender] = 'Female' and [product_preference] = 'Cappuccino' then [user_id] end) as F_C,
 COUNT( CASE
-			WHEN [gender] = 'Female' and [product_preference] = 'Espresso' then [user_id] end) as F_E,
+	WHEN [gender] = 'Female' and [product_preference] = 'Espresso' then [user_id] end) as F_E,
 COUNT( CASE
-			WHEN [gender] = 'Female' and [product_preference] = 'Iced Coffee' then [user_id] end) as F_I,
+	WHEN [gender] = 'Female' and [product_preference] = 'Iced Coffee' then [user_id] end) as F_I,
 COUNT( CASE
-			WHEN [gender] = 'Female' and [product_preference] = 'Latte' then [user_id] end) as F_L,
+	WHEN [gender] = 'Female' and [product_preference] = 'Latte' then [user_id] end) as F_L,
 COUNT( CASE
-			WHEN [gender] = 'Female' and [product_preference] = 'Local Special' then [user_id] end) as F_LS
+	WHEN [gender] = 'Female' and [product_preference] = 'Local Special' then [user_id] end) as F_LS
 FROM P
 --Male favorite products---
  WITH P AS (SELECT 
@@ -37,17 +37,17 @@ FROM [dbo].[starbucks_digital_marketing_data])
 
 SELECT 
 COUNT( CASE 
-			WHEN [gender] = 'male' and [product_preference] = 'Americano' then [user_id] end) as F_A,
+	WHEN [gender] = 'male' and [product_preference] = 'Americano' then [user_id] end) as F_A,
 COUNT( CASE
-			WHEN [gender] = 'male' and [product_preference] = 'Cappuccino' then [user_id] end) as F_C,
+	WHEN [gender] = 'male' and [product_preference] = 'Cappuccino' then [user_id] end) as F_C,
 COUNT( CASE
-			WHEN [gender] = 'male' and [product_preference] = 'Espresso' then [user_id] end) as F_E,
+	WHEN [gender] = 'male' and [product_preference] = 'Espresso' then [user_id] end) as F_E,
 COUNT( CASE
-			WHEN [gender] = 'male' and [product_preference] = 'Iced Coffee' then [user_id] end) as F_I,
+	WHEN [gender] = 'male' and [product_preference] = 'Iced Coffee' then [user_id] end) as F_I,
 COUNT( CASE
-			WHEN [gender] = 'male' and [product_preference] = 'Latte' then [user_id] end) as F_L,
+	WHEN [gender] = 'male' and [product_preference] = 'Latte' then [user_id] end) as F_L,
 COUNT( CASE
-			WHEN [gender] = 'male' and [product_preference] = 'Local Special' then [user_id] end) as F_LS
+	WHEN [gender] = 'male' and [product_preference] = 'Local Special' then [user_id] end) as F_LS
 FROM P
 
 --Does app usage vary across geographic regions?
@@ -76,16 +76,16 @@ FROM [dbo].[starbucks_digital_marketing_data]
 --Customers who participate in seasonal campaigns tend to buy which specific products?---
 SELECT
 	COUNT(CASE 
-			WHEN [product_preference] = 'Cappuccino' THEN [product_preference] END) AS T_Cappuccino,
+		WHEN [product_preference] = 'Cappuccino' THEN [product_preference] END) AS T_Cappuccino,
 	COUNT(CASE 
-			WHEN [product_preference] = 'Iced Coffee' THEN [product_preference] END) AS T_Iced_Coffee,
+		WHEN [product_preference] = 'Iced Coffee' THEN [product_preference] END) AS T_Iced_Coffee,
 	COUNT(CASE 
-			WHEN [product_preference] = 'Latte' THEN [product_preference] END) AS T_Latte,
+		WHEN [product_preference] = 'Latte' THEN [product_preference] END) AS T_Latte,
 	COUNT(CASE 
-			WHEN [product_preference] = 'Espresso' THEN [product_preference] END) AS T_Espresso,
+		WHEN [product_preference] = 'Espresso' THEN [product_preference] END) AS T_Espresso,
 	COUNT(CASE 
-			WHEN [product_preference] = 'Americano' THEN [product_preference] END) AS T_Americano,
+		WHEN [product_preference] = 'Americano' THEN [product_preference] END) AS T_Americano,
 	COUNT(CASE 
-			WHEN [product_preference] = 'Local Special' THEN [product_preference] END) AS T_Local_Special
+		WHEN [product_preference] = 'Local Special' THEN [product_preference] END) AS T_Local_Special
 FROM starbucks_digital_marketing_data
 WHERE [seasonal_campaign_engagement] <> 0
