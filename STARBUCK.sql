@@ -8,47 +8,12 @@ FROM [dbo].[starbucks_digital_marketing_data]
 GROUP BY [user_id], [age]
 ORDER BY avg_Value DESC
 --2. Differences in product preferences between men and women--
- WITH P AS (SELECT 
-	[user_id],
+ SELECT 
 	[gender],
-	[product_preference]
-FROM [dbo].[starbucks_digital_marketing_data])
---Female favorite products---
-SELECT 
-COUNT( CASE 
-	WHEN [gender] = 'Female' and [product_preference] = 'Americano' then [user_id] end) as F_A,
-COUNT( CASE
-	WHEN [gender] = 'Female' and [product_preference] = 'Cappuccino' then [user_id] end) as F_C,
-COUNT( CASE
-	WHEN [gender] = 'Female' and [product_preference] = 'Espresso' then [user_id] end) as F_E,
-COUNT( CASE
-	WHEN [gender] = 'Female' and [product_preference] = 'Iced Coffee' then [user_id] end) as F_I,
-COUNT( CASE
-	WHEN [gender] = 'Female' and [product_preference] = 'Latte' then [user_id] end) as F_L,
-COUNT( CASE
-	WHEN [gender] = 'Female' and [product_preference] = 'Local Special' then [user_id] end) as F_LS
-FROM P
---Male favorite products---
- WITH P AS (SELECT 
-	[user_id],
-	[gender],
-	[product_preference]
-FROM [dbo].[starbucks_digital_marketing_data])
-
-SELECT 
-COUNT( CASE 
-	WHEN [gender] = 'male' and [product_preference] = 'Americano' then [user_id] end) as F_A,
-COUNT( CASE
-	WHEN [gender] = 'male' and [product_preference] = 'Cappuccino' then [user_id] end) as F_C,
-COUNT( CASE
-	WHEN [gender] = 'male' and [product_preference] = 'Espresso' then [user_id] end) as F_E,
-COUNT( CASE
-	WHEN [gender] = 'male' and [product_preference] = 'Iced Coffee' then [user_id] end) as F_I,
-COUNT( CASE
-	WHEN [gender] = 'male' and [product_preference] = 'Latte' then [user_id] end) as F_L,
-COUNT( CASE
-	WHEN [gender] = 'male' and [product_preference] = 'Local Special' then [user_id] end) as F_LS
-FROM P
+	[product_preference],
+	count(*) as SL
+FROM [dbo].[starbucks_digital_marketing_data]
+group by GROUPING sets (([product_preference],[gender]), ([product_preference]), ([gender]))
 
 --Does app usage vary across geographic regions?
 WITH frequency AS (SELECT 
